@@ -36,8 +36,16 @@ export default function Navigation() {
         </li>
       </ul>
       <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="พิมพ์ข้อความเพื่อค้นหา" aria-label="Search" />
-        <button className="btn btn-outline-success" type="submit">ค้นหา</button>
+        <a className="navbar-brand" href="https://www.facebook.com/VR4PHxT">
+      <img src="/image/navbar/facebook.svg" alt="" width={30} height={24} />
+       </a>
+       <a className="navbar-brand" href="https://www.instagram.com/vr4phxtz._/">
+      <img src="/image/navbar/instagram.svg" alt="" width={30} height={24} />
+       </a>
+       <a className="navbar-brand" href="https://www.instagram.com/vr4phxtz._/">
+      <img src="/image/navbar/tiktok.svg" alt="" width={30} height={24} />
+       </a>
+
       </form>
     </div>
   </div>
