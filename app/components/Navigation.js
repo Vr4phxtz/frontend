@@ -35,6 +35,17 @@ export default function Navigation() {
           <a className="nav-link " href="/contact">ติดต่อเรา</a>
         </li>
       </ul>
+        <Link
+         href="/login"
+          className="me-3 text-success text-decoration-none"
+           style={{
+            border: '2px solid green',
+           borderRadius: '5px',
+          padding: '6px 12px',
+         }}
+            >
+             เข้าสู่ระบบ
+        </Link>
       <form className="d-flex" role="search">
         <a className="navbar-brand" href="https://www.facebook.com/VR4PHxT">
       <img src="/image/navbar/facebook.svg" alt="" width={30} height={24} />
