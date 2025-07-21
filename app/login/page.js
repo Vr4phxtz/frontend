@@ -14,7 +14,7 @@ export default function Login() {
         />
       </Head>
 
-      <div className="container mt-5">
+      <div className="container mt-5" style={{ paddingTop: '100px', paddingBottom: '100px'}}>
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">
             <div className="card shadow rounded-4">
