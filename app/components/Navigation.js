@@ -1,13 +1,29 @@
 'use client';
-import Link from 'next/link';
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
+  const router = useRouter();
+  const [tokenState, setToken] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setToken(token);
+  }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    router.push("/login");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link href="/" className="navbar-brand">
+        <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
           <img
-            src="discord.svg"
+            src="/discord.svg"
             alt="Logo"
             width={30}
             height={24}
@@ -40,7 +56,7 @@ export default function Navigation() {
             </li>
             <li className="nav-item dropdown">
               <Link
-                href="/service"
+                href="#"
                 className="nav-link dropdown-toggle"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -50,12 +66,12 @@ export default function Navigation() {
               </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <Link href="/service" className="dropdown-item">
+                  <Link href="#" className="dropdown-item">
                     Action
                   </Link>
                 </li>
                 <li>
-                  <Link href="/service" className="dropdown-item">
+                  <Link href="#" className="dropdown-item">
                     Another action
                   </Link>
                 </li>
@@ -63,7 +79,7 @@ export default function Navigation() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link href="/service" className="dropdown-item">
+                  <Link href="#" className="dropdown-item">
                     Something else here
                   </Link>
                 </li>
@@ -76,19 +92,21 @@ export default function Navigation() {
             </li>
           </ul>
 
-          <Link
-            href="/login"
-            className="me-3 text-success text-decoration-none"
-            style={{
-              border: '2px solid green',
-              borderRadius: '5px',
-              padding: '6px 12px',
-            }}
-          >
-            เข้าสู่ระบบ
-          </Link>
-
           <form className="d-flex" role="search">
+            {tokenState ? (
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="btn btn-outline-danger"
+              >
+                <i className="bi bi-box-arrow-right"></i> SignOut
+              </button>
+            ) : (
+              <Link href="/login" className="btn btn-outline-primary me-2">
+                <i className="bi bi-box-arrow-in-right"></i> Signin
+              </Link>
+            )}
+
             <a
               href="https://www.facebook.com/VR4PHxT"
               className="navbar-brand"

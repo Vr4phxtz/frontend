@@ -9,12 +9,12 @@ export default function Register() {
   const router = useRouter();
 
   const [title, setTitle] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
-  const [gender, setGender] = useState('');
+  const [sex, setSex] = useState('');
   const [birthday, setBirthday] = useState('');
   const [agree, setAgree] = useState(false);
 
@@ -28,24 +28,25 @@ export default function Register() {
       });
     }
 
-    const fullname = `${title}${firstName} ${lastName}`; // ตรงกับ Users List
+    // fullname ตาม format ที่ใช้งานใน API
+    const fullname = `${firstname} `;
 
     try {
-      const res = await fetch('http://itdev.cmtc.ac.th:3000/api/users', {
+      const res = await fetch('https://backend-nextjs-virid.vercel.app/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          title,
-          firstname: firstName,
-          lastname: lastName,
-          fullname,
+          title,          // ยังส่งคำนำหน้าแยกไปด้วย เผื่อ API ต้องการเก็บไว้
+          firstname,      // ชื่อจริงอย่างเดียว
+          lastname,
+          fullname,       // รวมชื่อกับนามสกุล (ไม่มีคำนำหน้า)
           username,
           password,
           address,
-          sex: gender,
+          sex,
           birthday,
         }),
       });
@@ -58,19 +59,19 @@ export default function Register() {
           icon: 'success',
           title: '<h3>บันทึกข้อมูลเรียบร้อยแล้ว</h3>',
           showConfirmButton: false,
-          timer: 2000
+          timer: 2000,
         }).then(() => {
-          router.push('/login'); // หรือจะเปลี่ยนเป็น /admin/users ก็ได้หากต้องการ
+          router.push('/login');  // เปลี่ยนเป็น /login ให้ตรงกับหน้า login ของคุณ
         });
 
         // Reset form
         setTitle('');
-        setFirstName('');
-        setLastName('');
+        setFirstname('');
+        setLastname('');
         setUsername('');
         setPassword('');
         setAddress('');
-        setGender('');
+        setSex('');
         setBirthday('');
         setAgree(false);
       } else {
@@ -78,7 +79,7 @@ export default function Register() {
           title: 'Error!',
           text: result.message || 'เกิดข้อผิดพลาด!',
           icon: 'error',
-          confirmButtonText: 'ตกลง'
+          confirmButtonText: 'ตกลง',
         });
       }
     } catch (error) {
@@ -154,8 +155,8 @@ export default function Register() {
                       <input
                         type="text"
                         className="form-control"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
                         required
                       />
                     </div>
@@ -164,8 +165,8 @@ export default function Register() {
                       <input
                         type="text"
                         className="form-control"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
                         required
                       />
                     </div>
@@ -189,10 +190,10 @@ export default function Register() {
                       <input
                         className="form-check-input"
                         type="radio"
-                        name="gender"
+                        name="sex"
                         value="ชาย"
-                        checked={gender === 'ชาย'}
-                        onChange={(e) => setGender(e.target.value)}
+                        checked={sex === 'ชาย'}
+                        onChange={(e) => setSex(e.target.value)}
                       />
                       <label className="form-check-label">ชาย</label>
                     </div>
@@ -200,10 +201,10 @@ export default function Register() {
                       <input
                         className="form-check-input"
                         type="radio"
-                        name="gender"
+                        name="sex"
                         value="หญิง"
-                        checked={gender === 'หญิง'}
-                        onChange={(e) => setGender(e.target.value)}
+                        checked={sex === 'หญิง'}
+                        onChange={(e) => setSex(e.target.value)}
                       />
                       <label className="form-check-label">หญิง</label>
                     </div>
