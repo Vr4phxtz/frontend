@@ -4,19 +4,22 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Navigation() {
+
   const router = useRouter();
   const [tokenState, setToken] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setToken(token);
-  }, []);
+  // อ่าน token จาก localStorage (ตอน mount)
+  const token = localStorage.getItem("token");
+  setToken(token);
+}, []);
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
-    setToken(null);
-    router.push("/login");
-  };
+  localStorage.removeItem("token");
+  setToken(null);
+  router.push("/login");
+};
+
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -97,13 +100,13 @@ export default function Navigation() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="btn btn-outline-danger"
+                className="btn btn-outline-danger me-2"
               >
-                <i className="bi bi-box-arrow-right"></i> SignOut
+                <i className="bi bi-box-arrow-right"></i> ออกจากระบบ
               </button>
             ) : (
               <Link href="/login" className="btn btn-outline-primary me-2">
-                <i className="bi bi-box-arrow-in-right"></i> Signin
+                <i className="bi bi-box-arrow-in-right"></i> SignIn
               </Link>
             )}
 

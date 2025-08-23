@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
+import Swal from 'sweetalert2'
 
 export default function Page() {
   const [items, setItems] = useState([]);
@@ -13,7 +14,7 @@ export default function Page() {
 
         const token = localStorage.getItem('token');
      if (!token) {
-       router.push('/signin');
+       router.push('/login');
        return;
      }
 
@@ -40,6 +41,15 @@ export default function Page() {
 
   const handleDelete = async (id) => {
   //console.log('user id :', id);
+  Swal.fire({
+      title: 'คุณยืนยันที่จะลบหรือไม่?',
+      text: "หากลบแล้วจะไม่สามารถกู้คืนได้!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ไม่',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
   try {
     const res = await fetch(`https://backend-nextjs-virid.vercel.app/api/users/${id}`, {
       method: 'DELETE',
@@ -50,10 +60,14 @@ export default function Page() {
     const result = await res.json();
     console.log(result);
 
+    Swal.fire('ลบสำเร็จ!', 'ข้อมูลผู้ใช้ถูกลบเรียบร้อยแล้ว', 'success');
   } catch (error) {
     console.error('Error fetching data:', error);
+    Swal.fire('ผิดพลาด!', 'ไม่สามารถลบข้อมูลได้', 'error');
   }
-}; //end handleDelete
+      }
+    });
+  }; //end handleDelete
 
 // ถ้า loading ให้ return null หรือข้อความ loading
  if (loading) {
