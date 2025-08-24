@@ -1,0 +1,31 @@
+/*
+  นี่คือตัวอย่าง CSS สำหรับตกแต่ง Footer
+  คุณสามารถเพิ่มหรือปรับเปลี่ยนได้ตามต้องการ
+*/
+
+.footer-container {
+  /* กำหนดพื้นหลังและสีตัวอักษรของ footer */
+  background-color: #212529;
+  color: #fff;
+}
+
+.footer-divider {
+  /* กำหนดสีและขอบของเส้นแบ่ง */
+  border-color: rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-social-icons {
+  /* จัดเรียงไอคอน Social Media */
+  gap: 1.5rem; /* ระยะห่างระหว่างไอคอน */
+}
+
+.footer-social-icons a {
+  color: #fff;
+  transition: color 0.3s ease; /* เพิ่ม transition ให้ดู smooth ขึ้น */
+}
+
+.footer-social-icons a:hover {
+  color: #0d6efd; /* เปลี่ยนสีเมื่อ hover */
+}
