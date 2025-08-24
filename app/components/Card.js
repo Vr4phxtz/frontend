@@ -4,7 +4,9 @@ export default function Card() {
         <div className="row">
             <div className="col-md-12 text-center mb-4"></div>
             <div className="col-md-12 text-center mb-4">
-                <h3>Card</h3>
+                <h1 className="text-4xl text-center font-mono text-red p-6">
+          Card
+                </h1>
             </div>
         </div>
         <div className="row">

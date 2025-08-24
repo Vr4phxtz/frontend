@@ -15,7 +15,7 @@ export default function Page() {
     useEffect(() => {
         async function getUsers() {
           try {
-            const res = await fetch(`http://itdev.cmtc.ac.th:3000/api/users/${id}`);
+            const res = await fetch(`https://backend-nextjs-virid.vercel.app/api/users/${id}`);
             if (!res.ok) {
               console.error('Failed to fetch data');
               return;
@@ -85,7 +85,7 @@ export default function Page() {
   }
   }
   return (
-   <center><div className="max-w-md mx-auto mt-10 p-4 border rounded">
+    <center><div className="max-w-md mx-auto mt-10 p-4 border rounded">
       <h1 className="text-xl font-bold mb-4">แก้ไขข้อมูลสมัครสมาชิก {id}</h1>
       {items.map((item) => (
       <form key={item.id} onSubmit={handleUpdateSubmit} className="space-y-3">
@@ -135,9 +135,8 @@ export default function Page() {
           ปรับปรุงข้อมูล
         </button>
       </form>
-       ))}
-       {/* ปิด items.map */}
+       ))} 
     </div>
-    </center> 
+    </center>
   )
 }

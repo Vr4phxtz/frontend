@@ -1,149 +1,114 @@
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import './Footer.css'; // Don't forget to import the custom CSS file
+
 export default function Footer() {
   return (
-    <div className="container-fluid">
+    <Container fluid className="footer-container">
       <footer className="bg-dark text-white py-5">
-        <div className="row">
-          <div className="col-7 col-md-2 mb-3">
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-       
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
+        <Container>
+          <Row>
+            {/* Navigation Columns */}
+            <Col xs={12} md={2} className="mb-3">
+              <h5>Products</h5>
+              <Stack gap={2}>
+                <a href="#" className="text-white text-decoration-none">
                   Features
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
+                <a href="#" className="text-white text-decoration-none">
                   Pricing
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
+                <a href="#" className="text-white text-decoration-none">
                   FAQs
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  About
+                <a href="#" className="text-white text-decoration-none">
+                  Support
                 </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-6 col-md-2 mb-3">
-           
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-             
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Home
+              </Stack>
+            </Col>
+
+            <Col xs={12} md={2} className="mb-3">
+              <h5>Company</h5>
+              <Stack gap={2}>
+                <a href="#" className="text-white text-decoration-none">
+                  About Us
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Features
+                <a href="#" className="text-white text-decoration-none">
+                  Contact
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Pricing
+                <a href="#" className="text-white text-decoration-none">
+                  Blog
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  FAQs
+                <a href="#" className="text-white text-decoration-none">
+                  Careers
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  About
+              </Stack>
+            </Col>
+
+            <Col xs={12} md={2} className="mb-3">
+              <h5>Legal</h5>
+              <Stack gap={2}>
+                <a href="#" className="text-white text-decoration-none">
+                  Privacy Policy
                 </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-6 col-md-2 mb-3">
-           
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-             
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Home
+                <a href="#" className="text-white text-decoration-none">
+                  Terms of Service
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Features
+                <a href="#" className="text-white text-decoration-none">
+                  Cookie Policy
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  Pricing
+              </Stack>
+            </Col>
+
+            {/* Newsletter Subscription */}
+            <Col xs={12} md={5} className="offset-md-1 mb-3">
+              <Form>
+                <h5>Subscribe to our newsletter</h5>
+                <p>Monthly digest of what's new and exciting from us.</p>
+                <Stack direction="horizontal" gap={2}>
+                  <Form.Control
+                    type="email"
+                    placeholder="Email address"
+                    aria-label="Email address"
+                  />
+                  <Button variant="primary" type="submit">
+                    Subscribe
+                  </Button>
+                </Stack>
+              </Form>
+            </Col>
+          </Row>
+
+          <hr className="footer-divider" />
+
+          {/* Bottom section (Copyright & Social Media) */}
+          <Row className="align-items-center">
+            <Col xs={12} md={6}>
+              <p className="mb-3 mb-md-0 text-center text-md-start">
+                © {new Date().getFullYear()} Company, Inc. All rights reserved.
+              </p>
+            </Col>
+            <Col xs={12} md={6}>
+              <Stack direction="horizontal" gap={3} className="justify-content-center justify-content-md-end">
+                <a href="#" aria-label="Instagram" className="text-white">
+                  {/* Replace with a real SVG icon component or a React-friendly SVG */}
+                  <i className="bi-instagram" style={{ fontSize: '1.5rem' }}></i>
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  FAQs
+                <a href="#" aria-label="Facebook" className="text-white">
+                  <i className="bi-facebook" style={{ fontSize: '1.5rem' }}></i>
                 </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-white">
-                  About
+                <a href="#" aria-label="Twitter" className="text-white">
+                  <i className="bi-twitter" style={{ fontSize: '1.5rem' }}></i>
                 </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-md-5 offset-md-1 mb-3">
-           
-            <form>
-             
-              <h5>Subscribe to our newsletter</h5>
-              <p>Monthly digest of what's new and exciting from us.</p>
-              <div className="d-flex flex-column flex-sm-row w-100 gap-2">
-               
-                <label htmlFor="newsletter1" className="visually-hidden">
-                  Email address
-                </label>
-                <input
-                  id="newsletter1"
-                  type="email"
-                  className="form-control"
-                  placeholder="Email address"
-                />
-                <button className="btn btn-primary" type="button">
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-         
-          <p>© 2025 Company, Inc. All rights reserved.</p>
-          <ul className="list-unstyled d-flex">
-           
-            <li className="ms-3">
-              <a className="link-body-emphasis" href="#" aria-label="Instagram">
-                <svg className="bi" width={24} height={24}>
-                  <use xlinkHref="#instagram" />
-                </svg>
-              </a>
-            </li>
-            <li className="ms-3">
-              <a className="link-body-emphasis" href="#" aria-label="Facebook">
-                <svg className="bi" width={24} height={24} aria-hidden="true">
-                  <use xlinkHref="#facebook" />
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
+              </Stack>
+            </Col>
+          </Row>
+        </Container>
       </footer>
-    </div>
+    </Container>
   );
 }

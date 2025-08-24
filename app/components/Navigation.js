@@ -7,24 +7,37 @@ export default function Navigation() {
 
   const router = useRouter();
   const [tokenState, setToken] = useState("");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
   // อ่าน token จาก localStorage (ตอน mount)
   const token = localStorage.getItem("token");
-  setToken(token);
-}, []);
+  setToken(localStorage.getItem("token"));
+
+    // ฟัง scroll event
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSignOut = () => {
-  localStorage.removeItem("token");
-  setToken(null);
-  router.push("/login");
-};
+    localStorage.removeItem("token");
+    setToken(null);
+    router.push("/login");
+  };
 
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary backdrop-blur-md bg-white/40 shadow-md transition-al duration-500">
+      <div className="container-fluid flex items-center justify-between px-4 py-2">
+        <Link href="/" className="navbar-brand d-flex align-items-center gap-2 font-semibold hover:scale-105 transition-transform">
           <img
             src="/discord.svg"
             alt="Logo"
@@ -100,7 +113,7 @@ export default function Navigation() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="btn btn-outline-danger me-2"
+                className="px-3 py-1.5 rounded-xl border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all"
               >
                 <i className="bi bi-box-arrow-right"></i> ออกจากระบบ
               </button>
